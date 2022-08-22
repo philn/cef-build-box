@@ -3,7 +3,7 @@
 
 ## Initial container setup
 
-To be done once (hopefully):
+To be done once (hopefully). This container will have the basic build dependencies installed.
 
 ```bash
 podman build -t cef-buildbox:v1 .
@@ -12,7 +12,7 @@ toolbox create -c cef-buildbox --image cef-buildbox:v1
 
 ## Get the code (lots of it)
 
-To get the code or update the checkout:
+To get the code or update the checkout. In this example the code will be stored in `cef-build`. You need around 30GB of free disk space.
 
 ```bash
 toolbox run -c cef-buildbox python3 /cef/automate-git.py --download-dir=$PWD/cef-build --branch=5060 --no-distrib --no-build
@@ -20,11 +20,15 @@ toolbox run -c cef-buildbox python3 /cef/automate-git.py --download-dir=$PWD/cef
 
 ## Compile the things
 
+This will bake a release build in `cef-build/chromium/src/cef/binary_distrib`.
+
 ```bash
-toolbox run -c cef-buildbox ./compile-cef --no-debug-build
+toolbox run -c cef-buildbox ./compile-cef --download-dir=$PWD/cef-build --no-debug-build
 ```
 
 ## Host the stuff
+
+Write a SHA1 checksum file for each tarball, and host everything through a Web server.
 
 ```fish
 for f in (find cef-build/chromium/src/cef/binary_distrib -name "*.tar.bz2")
