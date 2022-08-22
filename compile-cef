@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
+# FIXME: Allow easier tuning of this stuff.
 export GN_DEFINES="ffmpeg_branding=Chrome proprietary_codecs=true is_official_build=true use_sysroot=true use_allocator=none symbol_level=1 is_cfi=false use_thin_lto=false"
+
 export CEF_ARCHIVE_FORMAT=tar.bz2
 python3 /cef/automate-git.py --download-dir=$PWD/cef-build --branch=$CEF_BRANCH --force-clean --build-target=cefsimple --x64-build "$@"
-#mv /cef-build/chromium/src/cef/binary_distrib /compiled-binaries/cef
-# --minimal-distrib --client-distrib
