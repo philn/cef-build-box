@@ -41,6 +41,4 @@ ARG CHROMIUM_VERSION=106.0.5226.1
 
 RUN ["/install-cef-dependencies"]
 
-ARG CEF_BRANCH=5060
-
 CMD /bin/bash
