@@ -40,7 +40,8 @@ Write a SHA1 checksum file for each tarball, and host everything through a Web s
 
 ```fish
 for f in (find cef-build/chromium/src/cef/binary_distrib -name "*.tar.bz2")
-      sha1sum $f | cut -d' ' -f1 > $f.sha1
+    echo $f
+    sha1sum $f | cut -d' ' -f1 > $f.sha1
 end
 python -m http.server --directory cef-build/chromium/src/cef/binary_distrib/ 8080
 ```

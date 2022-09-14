@@ -2,7 +2,7 @@
 set -e
 
 # FIXME: Allow easier tuning of this stuff.
-export GN_DEFINES="ffmpeg_branding=Chrome proprietary_codecs=true is_official_build=true use_sysroot=true use_allocator=none symbol_level=1 is_cfi=false use_thin_lto=false"
+export GN_DEFINES="ffmpeg_branding=Chrome proprietary_codecs=true is_official_build=true use_sysroot=true use_allocator=none symbol_level=1 is_cfi=false use_thin_lto=false use_ozone=true"
 
 export CEF_ARCHIVE_FORMAT=tar.bz2
 python3 /cef/automate-git.py --force-clean --build-target=cefsimple --x64-build "$@"
