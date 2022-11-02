@@ -13,6 +13,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get -y upgrade && \
     apt-get -y install \
     bash-completion \
+    g++-aarch64-linux-gnu gcc-aarch64-linux-gnu \
     git \
     keyutils \
     libcap2-bin \
